@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=1200, maximum-scale=1.0, user-scalable=yes">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title></title>
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<script src="./js/jquery-1.11.3.min.js"></script>
+<!--Three-->
+<script src="./js/three/three.min.js"></script>
+<script src="./js/three/utils/threeUtils.js"></script>
+<script src='./js/three/utils/threex.volumetricspotlightmaterial.js'></script>
+
+<!--Cannon-->
+<script src="./js/physics/p2.min.js"></script>
+<script src="./js/physics/physics_engine.js"></script>
+
+
+<!--Wagner-->
+<script src="./js/wagner/Wagner.js"></script>
+<script src="./js/wagner/Wagner.base.js"></script>
+<script src="./js/wagner/ShaderLoader.js"></script>
+
+<!--User library-->
+<script src="./js/render_engine.js"></script>
+<script src="./js/scene.js"></script>
+<script src="./js/model_manager.js"></script>
+
+
+<!--Scritps-->
+<script src="./js/main_scene.js"></script>
+
+
+<script>
+var renderEngine;
+var scene = null;
+
+$(function() {
+	$("#stage").css("width", $(window).width());
+	$("#stage").css("height", $(window).height());
+	renderEngine = new RenderEngine();
+	renderEngine.initialize(document.getElementById("stage"));
+	scene = new MainScene(renderEngine);
+	
+	if(scene != null) {
+		scene.setup();
+		renderEngine.setActiveScene(scene);
+		renderEngine.startRender();
+	}
+})
+</script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- content come here     -->
+    <div id="stage"></div>
+</div>
+
+
+</body>
+</html>
